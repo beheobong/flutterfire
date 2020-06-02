@@ -73,26 +73,26 @@ int nextHandle = 0;
   return [FIRAuth authWithApp:[FIRApp appNamed:appName]];
 }
 
-#if TARGET_OS_IPHONE
-- (bool)application:(UIApplication *)application
-    didReceiveRemoteNotification:(NSDictionary *)notification
-          fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
-  if ([[FIRAuth auth] canHandleNotification:notification]) {
-    completionHandler(UIBackgroundFetchResultNoData);
-    return YES;
-  }
-  return NO;
-}
+// #if TARGET_OS_IPHONE
+// - (bool)application:(UIApplication *)application
+//     didReceiveRemoteNotification:(NSDictionary *)notification
+//           fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+//   if ([[FIRAuth auth] canHandleNotification:notification]) {
+//     completionHandler(UIBackgroundFetchResultNoData);
+//     return YES;
+//   }
+//   return NO;
+// }
 
-- (void)application:(UIApplication *)application
-    didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-  [[FIRAuth auth] setAPNSToken:deviceToken type:FIRAuthAPNSTokenTypeProd];
-}
+// - (void)application:(UIApplication *)application
+//     didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+//   [[FIRAuth auth] setAPNSToken:deviceToken type:FIRAuthAPNSTokenTypeProd];
+// }
 
-- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary *)options {
-  return [[FIRAuth auth] canHandleURL:url];
-}
-#endif
+// - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary *)options {
+//   return [[FIRAuth auth] canHandleURL:url];
+// }
+// #endif
 
 // TODO(jackson): We should use the renamed versions of the following methods
 // when they are available in the Firebase SDK that this plugin is dependent on.
